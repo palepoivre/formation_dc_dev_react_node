@@ -1,0 +1,146 @@
+html,
+body {
+  margin: 0;
+}
+h2 {
+  font-size: 20px;
+  padding: 8px;
+  margin: 0;
+}
+h3,
+h4 {
+  font-size: 14px;
+}
+
+div#Header {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  height: 120px;
+  background-color: #333;
+}
+
+div.Titre {
+  text-align: center;
+  color: white;
+}
+
+#Todo {
+  margin-top: 37vh;
+  font-family: sans-serif;
+  text-align: center;
+
+  /* Give app full page to work with */
+  height: 100vh;
+}
+
+#page-wrap {
+  text-align: center;
+
+  /* Prevent sidebar from showing a scrollbar on page */
+  overflow: auto;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+
+  /* Our sidebar item styling */
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #d1d1d1;
+  transition: color 0.2s;
+}
+
+/* Change color on hover */
+.bm-item:hover {
+  color: white;
+}
+
+/* The rest copied directly from react-burger-menu docs */
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #fff;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.ajoutTache {
+  margin-top: 75vh;
+}
+
+#Footer {
+  flex-shrink: 0;
+  text-align: center;
+  background-color: rgb(71, 166, 255);
+  color: white;
+  display: flex;
+}
+
+div.Reseau_sociaux {
+  margin: 0rem 0rem 1rem 1rem;
+}
+
+div.Contact {
+  margin: 0rem 0rem 0rem 14rem;
+}
+
+div.Signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  padding-top: 20px;
+  margin-top: 1vh;
+}
+
+div.Login {
+  display: flex;
+  justify-content: flex-end;
+  margin: -10% 1% 0% 0%;
+}
+div.Boutonsignup {
+  padding-top: 20px;
+}
