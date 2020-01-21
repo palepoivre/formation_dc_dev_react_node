@@ -3,8 +3,8 @@ import React from "react";
 import TodoItem from "./TodoItem";
 
 class TodoList extends React.Component {
+
   render() {
-    console.log(this.props.items);
     return (
       <ul>
         {this.props.items.map((item, index) => {
