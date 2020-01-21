@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 
 class Login extends React.Component {
   constructor(props) {
@@ -39,7 +40,8 @@ class Login extends React.Component {
           </div>
           <button>Login</button>
           <button>
-            <a href="signup.js">Sign Up</a>
+          <NavLink activeClassName="active" to="/signup">Sign Up</NavLink><small>(Access with token only)</small>
+                
           </button>
         </form>
         <a href={`/users/${this.props.userConnected.username}`}>

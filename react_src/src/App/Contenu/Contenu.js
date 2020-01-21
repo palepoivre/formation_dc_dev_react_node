@@ -1,60 +1,17 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
-import TodoHistorique from './components/TodoHistorique';
+import TodoHistorique from './Historique/TodoHistorique';
+import App from "./../../App/App";
  
 // import PrivateRoute from './Utils/PrivateRoute';
 // import PublicRoute from './Utils/PublicRoute';
-import TodoList from "./components/TodoList";
-import TodoInput from "./components/TodoInput";
+import TodoList from "./Taches/TodoList";
+import TodoInput from "./Taches/TodoInput";
 
 class Contenu extends React.Component {
   constructor(props) {
     super(props);
 
-
-    this.state = {
-      items: [
-        {
-          titre: "Faire les courses",
-          date_creation: "26/11/2019",
-          description: "description", 
-          message: { 
-            nom : ["palepoivre","javahl"],
-            date_creation : ["26/11/2019","27/11/2019"],
-            commentaire : ["commentaire 1","commentaire 2"],
-          },
-          contributeur: { nom : ["palepoivre","javahl"]},
-          historique: false,
-          isDone: false
-        },
-        {
-          titre: "Faire le ménage",
-          date_creation: "26/11/2019",
-          description: "description", 
-          message: { 
-            nom : ["palepoivre","javahl"],
-            date_creation : ["26/11/2019","27/11/2019"],
-            commentaire : ["commentaire 1","commentaire 2"],
-          },
-          contributeur: { nom : ["palepoivre","javahl"]},
-          historique: false,
-          isDone: false
-        },
-        {
-          titre: "Acheter un yacht",
-          date_creation: "26/11/2010",
-          description: "description", 
-          message: { 
-            nom : ["palepoivre","javahl"],
-            date_creation : ["26/11/2019","27/11/2019"],
-            commentaire : ["commentaire 1","commentaire 2"],
-          },
-          contributeur: { nom : ["palepoivre","javahl"]},
-          historique: false,
-          isDone: false
-        }
-      ]
-    };
   }
 
   getDate() {
@@ -90,7 +47,7 @@ class Contenu extends React.Component {
       <div id="Todo">
         <div className="TodoList">
           <TodoList
-            items={this.state.items}
+            items={this.props.items}
             removeItem={index => {
               this.handleRemoveItem(index);
             }}

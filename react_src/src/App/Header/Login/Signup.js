@@ -1,5 +1,7 @@
 import React from "react";
 
+import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+
 class Signup extends React.Component {
   constructor(props) {
     super(props);
@@ -9,6 +11,7 @@ class Signup extends React.Component {
       inputPwdSignup: ""
     };
   }
+  
 
   render() {
     return (
