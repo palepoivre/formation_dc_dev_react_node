@@ -10,17 +10,17 @@ export default props => {
         Home
       </NavLink>
 
-      <NavLink className="menu-item" to="/historique">
-        Fait
+      <NavLink className="menu-item" to="/Terminer">
+        Taches Terminer
       </NavLink>
 
-      <a className="menu-item" href="/recherche">
-        En attente
-      </a>
+      <NavLink className="menu-item" to="/recherche">
+        Taches En Cours
+        </NavLink>
 
-      <a className="menu-item" href="/historique">
+      <NavLink className="menu-item" to="/historique">
         Historique
-      </a>
+        </NavLink>
     </Menu>
   );
 };

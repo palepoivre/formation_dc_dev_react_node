@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
-import TodoHistorique from './components/TodoHistorique';
+import TodoHistorique from './Historique/TodoHistorique';
+import App from "./../../App/App";
  
 // import PrivateRoute from './Utils/PrivateRoute';
 // import PublicRoute from './Utils/PublicRoute';
-import TodoList from "./components/TodoList";
-import TodoInput from "./components/TodoInput";
+import TodoList from "./Taches/TodoList";
+import TodoInput from "./Taches/TodoInput";
 
 class Contenu extends React.Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class Contenu extends React.Component {
       <div id="Todo">
         <div className="TodoList">
           <TodoList
-            items={this.state.items}
+            items={this.props.items}
             removeItem={index => {
               this.handleRemoveItem(index);
             }}

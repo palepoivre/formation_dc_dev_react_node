@@ -5,7 +5,7 @@ import Contenu from "./Contenu/Contenu";
 import Header from "./Header/header";
 import Footer from "./Footer/footer";
 import Signup from "./Header/Login/Signup";
-import TodoHistorique from "./Contenu/components/TodoHistorique";
+import TodoHistorique from "./Contenu/Historique/TodoHistorique";
 
 class App extends React.Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class App extends React.Component {
           contributeur: { nom : ["palepoivre","javahl"]},
           historique: false,
           isDone: false,
-            id:1
+          id:1,
         },
         {
           titre: "Faire le ménage",
@@ -47,7 +47,7 @@ class App extends React.Component {
           contributeur: { nom : ["palepoivre","javahl"]},
           historique: false,
           isDone: false,
-            id:2
+          id:2,
         },
         {
           titre: "Acheter un yacht",
@@ -60,9 +60,9 @@ class App extends React.Component {
           },
           contributeur: { nom : ["palepoivre","javahl"]},
           historique: false,
-          isDone: false,
-            id:3
-        },
+          id:3,
+          isDone: false
+        }
       ]
     };
   }
@@ -70,7 +70,6 @@ class App extends React.Component {
     let i = 0;
     let userFound = false;
     while (i < this.state.users.length && userFound === false) {
-      console.log("user", user)
       if (
         this.state.users[i].username === user.inputNameValue &&
         this.state.users[i].password === user.inputPasswordValue
@@ -78,7 +77,6 @@ class App extends React.Component {
         userFound = true;
         this.setState({ isUserConnected: userFound, userConnected: this.state.users[i] });
       }
-      console.log("while iteration", i, this.state.users[i])
       i++;
     }
   };
@@ -86,9 +84,9 @@ class App extends React.Component {
   render() {
     let contenu;
     if (this.state.isUserConnected === true) {
-      contenu = <Contenu />;
+      contenu = <Contenu items = {this.state.items}></Contenu>;
     } else {
-      contenu = (
+      contenu =
         <Signup
           addUser={user => {
             let newUser = {
@@ -99,7 +97,7 @@ class App extends React.Component {
             this.setState({ users: newUsers });
           }}
         />
-      );
+      
     }
     return (
       <div id="App">
@@ -110,6 +108,9 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={Contenu} />
               <Route path="/historique" component={()=> <TodoHistorique {...this.state.items}></TodoHistorique>} />
+              <Route exact path="/" component={()=> <Contenu items = {this.state.items}></Contenu>} />
+              <Route path="/register" component={Signup} />
+              <Route path="/historique" component={()=> <TodoHistorique items = {this.state.items}></TodoHistorique>} />
             </Switch>
           </div>
         <Footer />
