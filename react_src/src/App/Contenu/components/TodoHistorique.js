@@ -4,13 +4,13 @@ class TodoHistorique extends React.Component {
   
    historique = items => {
      let i = 0;
-     while (i < this.state.items.length) {
+     while (i < this.props.items.length) {
        console.log("user", items)
        if (
          this.props.items.historique === true
        ) {
 
-         let newItems = this.state.items.map((item, i)=>({
+         let newItems = this.props.items.map((item, i)=>({
            titre: this.props.items[i].titre,
            message: {
              nom: this.props.items[i].message.nom,
