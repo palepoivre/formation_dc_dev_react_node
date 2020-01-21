@@ -6,7 +6,7 @@ class Profil extends React.component{
     return(
       <div>
         <h5>Mon profil : </h5>
-        <p>{this.state.users.username}</p>
+        <p>{this.props.users.username}</p>
       </div>
     )
   }
