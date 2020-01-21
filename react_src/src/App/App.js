@@ -34,6 +34,7 @@ class App extends React.Component {
           historique: false,
           isDone: false,
           id:1,
+
         },
         {
           titre: "Faire le ménage",
@@ -46,6 +47,7 @@ class App extends React.Component {
           },
           contributeur: { nom : ["palepoivre","javahl"]},
           historique: false,
+
           isDone: false,
           id:2,
         },
@@ -102,7 +104,6 @@ class App extends React.Component {
     return (
       <div id="App">
       <BrowserRouter>
-
         <Header users={this.state.users} userConnected={this.state.userConnected} connected={this.connected} />
         <div className="content">
             <Switch>

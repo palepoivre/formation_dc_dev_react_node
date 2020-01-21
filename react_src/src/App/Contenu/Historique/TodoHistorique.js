@@ -10,7 +10,9 @@ class TodoHistorique extends React.Component {
        return item.historique == true
      })
 
+
      console.log("itemsHistoriques")
+
 
      return itemsHistoriques
 
@@ -23,10 +25,19 @@ class TodoHistorique extends React.Component {
       <div id="TodoHistorique">
           <TodoHistorique
             items={this.props.items}
+
+    let itemsHistoriques = this.historique()
+    console.log("itemsHistoriques", itemsHistoriques)
+
+    return (
+      <div id="TodoHistorique">
+          <TodoList
+            items={itemsHistoriques}
+
           />
         </div>
     );
-  }
+  )
 }
 
 export default TodoHistorique;
