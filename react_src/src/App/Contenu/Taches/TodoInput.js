@@ -17,12 +17,14 @@ class TodoInput extends React.Component {
           placeholder="Ajouter un item"
           onChange={e => {
             this.setState({ inputValue: e.target.value });
+            e.preventDefault();
           }}
         />
         <button
-          onClick={() => {
+          onClick={(e) => {
             this.props.addItem(this.state.inputValue);
             this.setState({ inputValue: "" });
+            e.preventDefault();
           }}
         >
           +

@@ -1,15 +1,23 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, NavLink, Link, useParams} from 'react-router-dom';
 
 import Contenu from "./Contenu/Contenu";
 import Header from "./Header/header";
 import Footer from "./Footer/footer";
 import Signup from "./Header/Login/Signup";
 import TodoHistorique from "./Contenu/Historique/TodoHistorique";
+import TodoHistoriqueChild from "./Contenu/Historique//TodoHistoriqueChild";
+import TodoTerminer from "./Contenu/Terminer/TodoTerminer";
+import TodoTerminerChild from "./Contenu/Terminer/TodoTerminerChild";
+import TodoActif from "./Contenu/Actif/TodoActif";
+import TodoActifChild from "./Contenu/Actif/TodoActifChild";
+
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       url: ":path",
       isUserConnected: false,
@@ -32,10 +40,10 @@ class App extends React.Component {
           },
           contributeur: { nom : ["palepoivre","javahl"]},
           historique: true,
-          isDone: false
+          isDone: true
         },
         {
-          titre: "Faire le ménage",
+          titre: "Acheter une villa",
           date_creation: "26/11/2019",
           description: "description", 
           message: { 
@@ -63,6 +71,7 @@ class App extends React.Component {
       ]
     };
   }
+
   connected = user => {
     let i = 0;
     let userFound = false;
@@ -78,12 +87,16 @@ class App extends React.Component {
     }
   };
 
+  setItems = (items) => {
+    this.setState({items: [...items]})
+  }
+
   render() {
     let contenu;
     if (this.state.isUserConnected === true) {
       contenu = <Contenu items = {this.state.items}></Contenu>;
     } else {
-      contenu =
+      contenu = (
         <Signup
           addUser={user => {
             let newUser = {
@@ -93,18 +106,24 @@ class App extends React.Component {
             let newUsers = [...this.state.users, newUser];
             this.setState({ users: newUsers });
           }}
-        />
+        />)
       
     }
+
     return (
       <div id="App">
       <BrowserRouter>
         <Header users={this.state.users} userConnected={this.state.userConnected} connected={this.connected} />
         <div className="content">
             <Switch>
-              <Route exact path="/" component={()=> <Contenu items = {this.state.items}></Contenu>} />
+              <Route exact path="/" component={() => <Contenu items = {this.state.items} setItems={this.setItems} ></Contenu>} />
               <Route path="/register" component={Signup} />
-              <Route path="/historique" component={()=> <TodoHistorique items = {this.state.items}></TodoHistorique>} />
+              <Route path="/historiques" component={() => <TodoHistorique items = {this.state.items}></TodoHistorique>} />
+              <Route exact path="/historique/:id" component={() => <TodoHistoriqueChild items={this.state.items}/>} />
+              <Route path="/terminers" component={() => <TodoTerminer items = {this.state.items}></TodoTerminer>} />
+              <Route exact path="/terminer/:id" component={() => <TodoTerminerChild items={this.state.items}/>} />
+              <Route path="/actifs" component={() => <TodoActif items = {this.state.items}></TodoActif>} />
+              <Route exact path="/actif/:id" component={() => <TodoActifChild items={this.state.items}/>} />
             </Switch>
           </div>
         <Footer />

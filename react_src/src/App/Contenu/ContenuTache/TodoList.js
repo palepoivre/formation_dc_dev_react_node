@@ -1,7 +1,9 @@
 import React from "react";
 
 import TodoItem from "./TodoItem";
-import TodoHistorique from "./TodoHistorique";
+import TodoHistorique from "./../Historique/TodoHistorique";
+import TodoTerminer from "./../Terminer/TodoTerminer";
+import TodoActif from "./../Actif/TodoActif";
 
 class TodoList extends React.Component {
  

@@ -40,7 +40,7 @@ class Login extends React.Component {
           </div>
           <button>Login</button>
           <button>
-          <NavLink activeClassName="active" to="/signup">Sign Up</NavLink><small>(Access with token only)</small>
+          <NavLink activeClassName="active" to="/register">Sign Up</NavLink><small>(Access with token only)</small>
                 
           </button>
         </form>
