@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import TodoHistorique from './Historique/TodoHistorique';
+import TodoActif from "./Actif/TodoActif";
+import TodoTerminer from "./Terminer/TodoTerminer";
 import App from "./../../App/App";
  
 // import PrivateRoute from './Utils/PrivateRoute';
@@ -20,27 +22,27 @@ class Contenu extends React.Component {
 
   handleDone(index) {
     let newItem = {
-      titre: this.state.items[index].titre,
-      date_creation: this.state.items[index].date,
-      description: this.state.items[index].description,
-      contributeur: this.state.items[index].contributeur,
+      titre: this.props.items[index].titre,
+      date_creation: this.props.items[index].date,
+      description: this.props.items[index].description,
+      contributeur: this.props.items[index].contributeur,
       message: { 
         nom : [""],
         date_creation : [""],
         commentaire : [""]
       },
       historique: false,
-      isDone: !this.state.items[index].isDone
+      isDone: !this.props.items[index].isDone
     };
-    let newItems = [...this.state.items];
+    let newItems = [...this.props.items];
     newItems.splice(index, 1, newItem);
-
-    this.setState({ items: newItems });
+    this.props.setItems(newItems);
+    
   }
   handleRemoveItem(index) {
-    let newItems = [...this.state.items];
+    let newItems = [...this.props.items];
     newItems.splice(index, 1);
-    this.setState({ items: newItems });
+    this.props.setItems(newItems);
   }
   render() {
     return (
@@ -56,21 +58,19 @@ class Contenu extends React.Component {
             }}
           />
         </div>
-        <div class="TodoList">
+        <div className="TodoList">
           <TodoInput
             addItem={value => {
-              let newItem = { titre: value, date_creation: value, description: value , message: { 
+              let newItem = { titre: value, date_creation: this.getDate(), description: "" , message: { 
                 nom : [""],
                 date_creation : [""],
                 commentaire : [""],
               } ,
-              contributeur: { nom : [this.props.user.username]} , historique: false , isDone: false };
+              contributeur: { nom : [this.props.items.username]} , historique: false , isDone: false };
 
-              let newItems = [...this.state.items, newItem];
+              let newItems = [...this.props.items, newItem];
 
-              this.setState({ items: newItems });
-
-              console.log("newItem", newItem);
+              this.props.setItems(newItems);
             }}
           />
         </div>

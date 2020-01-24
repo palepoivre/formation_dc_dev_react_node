@@ -10,11 +10,11 @@ export default props => {
         Home
       </NavLink>
 
-      <NavLink className="menu-item" to="/Terminer">
+      <NavLink className="menu-item" to="/terminer">
         Taches Terminer
       </NavLink>
 
-      <NavLink className="menu-item" to="/recherche">
+      <NavLink className="menu-item" to="/actif">
         Taches En Cours
         </NavLink>
 
