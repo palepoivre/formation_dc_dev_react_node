@@ -23,10 +23,8 @@ class App extends React.Component {
       isUserConnected: false,
       userConnected: {},
       users: [
-        { username: "Alice", password: "Alice" },
-        { username: "Bob", password: "Bob" },
-        { username: "Claire", password: "Claire" },
-        { username: "David", password: "David" }
+        {username:"",
+        password:""}
       ],
       items: [
         {
