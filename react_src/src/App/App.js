@@ -115,6 +115,11 @@ class App extends React.Component {
       <BrowserRouter>
         <Header users={this.state.users} userConnected={this.state.userConnected} connected={this.connected} />
         <div className="content">
+        <ul>
+          <li>
+          <Link to="/itemms">Users</Link>
+          </li>
+          </ul>
             <Switch>
               <Route exact path="/" component={() => <Contenu items = {this.state.items} setItems={this.setItems} ></Contenu>} />
               <Route path="/register" component={Signup} />
