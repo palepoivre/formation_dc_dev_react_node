@@ -15,6 +15,13 @@ const dbName = 'Todolist';
 // Create a new MongoClient
 const client = new MongoClient(url);
 
+var user = mongoose.Schema({
+  username: String, 
+  password: String
+}); 
+
+var User = mongoose.model('User', user);
+
 // Use connect method to connect to the Server
 client.connect(function(err) {
   assert.equal(null, err);
@@ -83,6 +90,21 @@ app.get('/todo', async (req, res) => {
     res.send(result)
    
   })
+})
+
+.post(function(req,res){
+  // Nous utilisons le schéma user
+    var user = new User();
+  // Nous récupérons les données reçues pour les ajouter à l'objet user
+    user.username = req.body.username;
+    user.password = req.body.password;
+  //Nous stockons l'objet en base
+    user.save(function(err){
+      if(err){
+        res.send(err);
+      }
+      res.send({message : 'Bravo, la user est maintenant stockée en base de données'});
+    })
 })
 
 

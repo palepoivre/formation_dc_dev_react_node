@@ -28,41 +28,15 @@ class App extends React.Component {
       ],
       items: [
         {
-          titre: "Faire les courses",
-          date_creation: "26/11/2019",
-          description: "description", 
+          titre: "",
+          date_creation: "",
+          description: "", 
           message: { 
-            nom : ["palepoivre","javahl"],
-            date_creation : ["26/11/2019","27/11/2019"],
-            commentaire : ["commentaire 1","commentaire 2"],
+            nom : [""],
+            date_creation : [""],
+            commentaire : [""],
           },
-          contributeur: { nom : ["palepoivre","javahl"]},
-          historique: true,
-          isDone: true
-        },
-        {
-          titre: "Acheter une villa",
-          date_creation: "26/11/2019",
-          description: "description", 
-          message: { 
-            nom : ["palepoivre","javahl"],
-            date_creation : ["26/11/2019","27/11/2019"],
-            commentaire : ["commentaire 1","commentaire 2"],
-          },
-          contributeur: { nom : ["palepoivre","javahl"]},
-          historique: false,
-          isDone: false
-        },
-        {
-          titre: "Acheter un yacht",
-          date_creation: "26/11/2010",
-          description: "description", 
-          message: { 
-            nom : ["palepoivre","javahl"],
-            date_creation : ["26/11/2019","27/11/2019"],
-            commentaire : ["commentaire 1","commentaire 2"],
-          },
-          contributeur: { nom : ["palepoivre","javahl"]},
+          contributeur: { nom : [""]},
           historique: false,
           isDone: false
         }
