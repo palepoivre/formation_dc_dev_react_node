@@ -1,15 +1,30 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import axios from 'axios';
 
-class Login extends React.Component {
+
+class Login extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      inputNameValue: "",
-      inputPasswordValue: ""
+      email: "",
+      password: "",
+      errorLogin: ''
     };
+
+    this.handleLogin = this.handleLogin.bind(this);
   }
+
+  handleLogin(event) {
+      axios.post("http://localhost:3001/login", {
+        email: this.state.email,
+        password: this.state.password
+      },
+      {
+        withCredentials: true
+      });
+  }
+
   render() {
     return (
       <div>

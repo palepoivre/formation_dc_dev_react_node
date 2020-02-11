@@ -1,36 +1,12 @@
 const express = require('express')
 const app = express()
-var mongoose = require('mongoose');
+
 let connect = require("./connection.js")
 let config = require("./config.js")
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-// Connection URL
-const url = 'mongodb://localhost:27017';
 
-// Database Name
-const dbName = 'Todolist';
-
-// Create a new MongoClient
-const client = new MongoClient(url);
-
-var user = mongoose.Schema({
-  username: String, 
-  password: String
-}); 
-
-var User = mongoose.model('User', user);
-
-// Use connect method to connect to the Server
-client.connect(function(err) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
-
-  const db = client.db(dbName);
-
-  client.close();
-});
 const insertDocuments = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('documents');
@@ -45,8 +21,6 @@ const insertDocuments = function(db, callback) {
     callback(result);
   });
 }
-
-
 
 const findDocuments = function(db, callback) {
   // Get the documents collection
@@ -92,21 +66,80 @@ app.get('/todo', async (req, res) => {
   })
 })
 
-.post(function(req,res){
-  // Nous utilisons le schéma user
-    var user = new User();
-  // Nous récupérons les données reçues pour les ajouter à l'objet user
-    user.username = req.body.username;
-    user.password = req.body.password;
-  //Nous stockons l'objet en base
-    user.save(function(err){
-      if(err){
-        res.send(err);
-      }
-      res.send({message : 'Bravo, la user est maintenant stockée en base de données'});
-    })
+app.post(async function(req,res){
+
+  let {db_client, db_connection} = await connect();
+  console.log("coucou");
+  db_connection.collection('user').insertOne({}).toArray((err, result) => {
+    if(err) return console.log(err)
+
+    console.log('user :', result)
+
+    db_client.close()
+    res.send(result)
+   
+  })
 })
 
+/* 
+SIGNUP
+*/
+app.post('/register', async (req, res, next) => {
+ 
+  try {
+   
+    let user = req.body
+    console.log("user", user)
+   
+    let existingUser = await queries.findOne('user', {username: user.username})
+   
+    if(existingUser !== null) {
+      next("Ce compte existe déjà")
+    } else {
+      /* DELETE les elements non necessaires dans la base de données */
+      delete user.repeatPassword;
+      delete user.errors;
+      delete user.redirectAfterRegister;
+
+      let insert = await queries.insertOne('user', user)
+     
+      res.json(insert)
+    }
+   
+  } catch(err) {
+    next(err)
+  }
+})
+
+/* 
+LOGIN
+*/
+app.post('/login', async (req, res, next) => {
+ 
+  try {
+   
+    let user = req.body
+    console.log("user", user)
+    console.log("session", req.session)
+   
+    let existingUser = await queries.findOne('user', {username: user.username})
+   
+    if(existingUser !== null && existingUser.password === user.password) {
+      req.session.user = {username: existingUser.username, _id: existingUser._id}
+      let userToReturn = {
+        _id: existingUser._id,
+        username: existingUser.username
+      }
+      console.log('session2: ', req.session)
+      res.send(userToReturn)
+    } else {
+      next("Invalid credentials")
+    }
+   
+  } catch(err) {
+    next(err)
+  }
+})
 
 app.listen(config.port, function () {
   console.log(`Example app listening on port ${config.port} !`)
