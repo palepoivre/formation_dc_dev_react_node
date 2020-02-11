@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-
+var mongoose = require('mongoose');
 let connect = require("./connection.js")
 let config = require("./config.js")
 const MongoClient = require('mongodb').MongoClient;
