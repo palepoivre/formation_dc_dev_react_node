@@ -1,21 +1,28 @@
 {
-  "name": "node_src",
+  "name": "todolist",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "todolist",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node server.js",
+    "dev": "nodemon server.js"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "nodejs",
+    "jwt",
+    "passport",
+    "express"
+  ],
+  "author": "palepoivre",
+  "license": "",
   "dependencies": {
-    "express": "^4.17.1",
-    "mongodb": "^3.4.1",
-    "mongoose": "^5.8.11",
-    "src": "^1.1.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.2"
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^7.4.2",
+    "mongodb": "^3.1.6",
+    "mongoose": "^5.2.15",
+    "nodemon": "^1.18.3"
   }
 }

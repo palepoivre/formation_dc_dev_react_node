@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import Uuid from 'uuid/v4';
+
 import Actif from "./Actif/Actif";
 import Terminer from "./Terminer/Terminer";
-import App from "./../../App/App";
+import App from "./../App";
 import List from "./Taches/List";
 import Input from "./Taches/Input";
 
@@ -10,16 +12,27 @@ class Contenu extends React.Component {
   constructor(props) {
     super(props);
 
+      // Use of Date.now() function 
+  let date_now = Date.now();
+
+  let date_ob = new Date(date_now);
+  let date = date_ob.getDate();
+  let month = date_ob.getMonth() + 1;
+  let year = date_ob.getFullYear();
+
+  this.state = {
+    date_creation: date + "/" + month + "/" + year , 
+    id: this.props.items.id
+  };
   }
 
-  getDate() {
-    var date = { currentTime: new Date().toLocaleString() };
-  }
+
 
   handleDone(index) {
     let newItem = {
+      id: this.props.items[index].id,
       titre: this.props.items[index].titre,
-      date_creation: this.props.items[index].date,
+      date_creation: this.props.items[index].date_creation,
       description: this.props.items[index].description,
       isDone: !this.props.items[index].isDone
     };
@@ -50,7 +63,7 @@ class Contenu extends React.Component {
         <div className="TodoList">
           <Input
             addItem={value => {
-              let newItem = { titre: value, date_creation: this.getDate(), description: value
+              let newItem = { id: this.state.id, titre: value, date_creation: this.state.date_creation, description: value
               , isDone: false };
 
               let newItems = [...this.props.items, newItem];

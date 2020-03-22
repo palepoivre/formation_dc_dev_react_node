@@ -1,146 +1,244 @@
-html,
-body {
+
+
+/*@font-face{
+    font-family:'Bangers';
+    src: url('Bangers-Regular.otf') format('truetype'),
+    url('Bangers-Regular.ttf') format('ttf'),
+    url('Bangers-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+@media (max-width: 450px) {
+*{
   margin: 0;
+  padding: 0;
 }
-h2 {
-  font-size: 20px;
-  padding: 8px;
-  margin: 0;
-}
-h3,
-h4 {
-  font-size: 14px;
-}
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+	  height: 100%;
+  }
+  a{
+    text-decoration: none;
+  }
+  li{
+      font-family: Bangers,cursive;
+      text-decoration: none;
+      list-style: none;
+      font-size:15px;
+  }
+  p{
+      font-family: Bangers,cursive;
+  }
+  h1 {
+    font-family: Bangers,cursive;
+    font-size:40px;
+    color:rgb(53, 60, 163);
+  }
+  h2 {
+    font-size: 20px;
+    padding: 8px;
+    margin: 0;
+  }
+  h3,
+  h4 {
+    font-size: 14px;
+  }
 
-div#Header {
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
-  height: 120px;
-  background-color: #333;
-}
+  div#Header {
+    position: absolute; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    height: 120px;
+    background-color: #333;
+  }
+  ul.nav-ul{
+    margin: -1vh -2vh -3vh 1vh;
+    display: inline-flex;
+  }
+  ul.navbar-nav{
+	display: block;
+  }
+  li.nav-item{
+    margin: 3vh 0vh 0vh 3vh;
+	display: inline-flex;
+  }
+  li.tache{
+    height: 10vh;
+    border-radius: 30px;
+    padding-bottom: 25vh;
+  }
+  a.nav-link {
+	color: white !important;
+  }
+  div.Titre {
+    margin-top: -1rem;
+    text-align: center;
+    color: white;
+  }
 
-div.Titre {
-  text-align: center;
-  color: white;
-}
+  div#App{
+    /*height: 29rem;*/
+  }
+  #Todo {
+    margin-top: 10vh;
+    font-family: sans-serif;
+    text-align: center;
 
-#Todo {
-  margin-top: 37vh;
-  font-family: sans-serif;
-  text-align: center;
+    /* Give app full page to work with */
+    height: 100vh;
+  }
 
-  /* Give app full page to work with */
-  height: 100vh;
-}
+  #page-wrap {
+    text-align: center;
 
-#page-wrap {
-  text-align: center;
+    /* Prevent sidebar from showing a scrollbar on page */
+    overflow: auto;
+  }
 
-  /* Prevent sidebar from showing a scrollbar on page */
-  overflow: auto;
-}
+  /* Individual item */
+  .bm-item {
+    display: inline-block;
 
-/* Individual item */
-.bm-item {
-  display: inline-block;
+    /* Our sidebar item styling */
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+    transition: color 0.2s;
+  }
 
-  /* Our sidebar item styling */
-  text-decoration: none;
-  margin-bottom: 10px;
-  color: #d1d1d1;
-  transition: color 0.2s;
-}
+  /* Change color on hover */
+  .bm-item:hover {
+    color: white;
+  }
 
-/* Change color on hover */
-.bm-item:hover {
-  color: white;
-}
+  /* The rest copied directly from react-burger-menu docs */
 
-/* The rest copied directly from react-burger-menu docs */
+  /* Position and sizing of burger button */
+  .bm-burger-button {
+    position: absolute;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 36px;
+  }
 
-/* Position and sizing of burger button */
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  left: 36px;
-  top: 36px;
-}
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: #fff;
+  }
 
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: #fff;
-}
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
 
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: #bdc3c7;
+  }
 
-/* Color/shape of close button cross */
-.bm-cross {
-  background: #bdc3c7;
-}
+  /* General sidebar styles */
+  .bm-menu {
+    background: #373a47;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+  }
 
-/* General sidebar styles */
-.bm-menu {
-  background: #373a47;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
-}
+  div.content{
+    margin-top: 20vh;
+    height:100%;
+  }
+  /* Morph shape necessary with bubble or elastic */
+  .bm-morph-shape {
+    fill: #373a47;
+  }
 
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-  fill: #373a47;
-}
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: #b8b7ad;
+  }
 
-/* Wrapper for item list */
-.bm-item-list {
-  color: #b8b7ad;
-}
+  /* Styling of overlay */
+  .bm-overlay {
+    position: absolute !important;
+    background: rgba(0, 0, 0, 0.3);
+  }
 
-/* Styling of overlay */
-.bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
+  .ajoutTache {
+    margin-top: 75vh;
+  }
 
-.ajoutTache {
-  margin-top: 75vh;
-}
+  div.Reseau_sociaux {
+    margin: 0rem 0rem 1rem 1rem;
+  }
 
-#Footer {
-  flex-shrink: 0;
-  text-align: center;
-  background-color: rgb(71, 166, 255);
-  color: white;
-  display: flex;
-}
+  div.Contact {
+    margin: 0rem 0rem 0rem 14rem;
+  }
 
-div.Reseau_sociaux {
-  margin: 0rem 0rem 1rem 1rem;
-}
+  div.Signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    padding-top: 20px;
+    margin-top: 1vh;
+  }
 
-div.Contact {
-  margin: 0rem 0rem 0rem 14rem;
-}
+  div.Login {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -70px;
+    margin-right:10px;
+  }
+  div.Boutonsignup {
+    padding-top: 20px;
+  }
+  .button_login {
+    background-color: white;  
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 8px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #4CAF50;
+  }
+  div.button{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .ajout_tache{
+    margin-top: 10vh;
+  }
+  button.tache{
+    margin-top: 2vh;
+  }
+  
 
-div.Signup {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100vh;
-  padding-top: 20px;
-  margin-top: 1vh;
-}
+  .creator{
+	 font-size: 15px 
+  }
+  
+   #Footer {
+    position: fixed;
+    bottom: 0;
+    height: 100px;
+    text-align: center;
+    background-color: rgb(71, 166, 255);
+    color: white;
+    display: flex;
+  }
 
-div.Login {
-  display: flex;
-  justify-content: flex-end;
-  margin: -10% 1% 0% 0%;
-}
-div.Boutonsignup {
-  padding-top: 20px;
+  div.creator{
+    width: 33%;
+  }
 }
